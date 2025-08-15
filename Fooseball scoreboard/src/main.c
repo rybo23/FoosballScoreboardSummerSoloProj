@@ -11,6 +11,7 @@
  *               is used to begin computer scoring, in which a real opponent's scoring
  *               is simulated. The first to 10 wins.
  *
+ * Platform:     MSP430F5529
  * Author:       Ryan Boyle
  * Date:         July–August 2025
  ***********************************************************************************************/
