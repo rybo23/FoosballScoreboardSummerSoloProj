@@ -16,7 +16,7 @@
 #define SHCP BIT1                    //"Shift Clock Pin" P3.1
 #define LTCH BIT2                    //"Latch Clock" P3.2
 #define DEBOUNCE_TIME 100            //100ms de-bounce time for buttons
-#define DEBOUNCE_TIMESENSOR 1        //1s "de-bounce" time for photoelectric sensors
+#define COOLDOWN_TIMESENSOR 1        //1s cooldown time for photoelectric sensors
 #define HOLD_TIME 2                  //2s required hold time of the reset button
 #define SINGLE_PLAYER_LED_TOGGLE 10  //10 half second or 5 second duration for LED toggle
 #define DIFFICULTY 5                 //DIFFICULTY adds to min and max duration
@@ -98,7 +98,7 @@ unsigned char LgoalSensor(void){
 
 
         if (currentStateL == 1 && lastStateL == 0) {                //Detect rising edge: 0 (of the previous state) to 1 (current)
-            if ((sTicks - lastTriggerTime) > DEBOUNCE_TIMESENSOR) {
+            if ((sTicks - lastTriggerTime) > COOLDOWN_TIMESENSOR) { //Eexecutes the following code once cooldown is complete
                 lastTriggerTime = sTicks;                           //Records the time of this trigger
                 lastStateL = currentStateL;                         //Update to current state (triggered)
                 return 1;                                           //The sensor was triggered
@@ -146,7 +146,7 @@ unsigned char RgoalSensor(void){
 
                                                                        //Detect rising edge: 0 (of the previous state) to 1 (current)
             if (currentStateR == 1 && lastStateR == 0) {
-                if ((sTicks - lastPressTime) > DEBOUNCE_TIMESENSOR) {
+                if ((sTicks - lastPressTime) > COOLDOWN_TIMESENSOR) {  //Eexecutes the following code once cooldown is complete
                     lastPressTime = sTicks;                            //Keeps track of the last trigger time so sTicks can be measured from it
                     lastStateR = currentStateR;                        //Update to current state (triggered)
                     return 1;                                          //The sensor was activated
@@ -388,3 +388,4 @@ __interrupt void Timer2_A0_ISR(void) {
 
 
 }
+
