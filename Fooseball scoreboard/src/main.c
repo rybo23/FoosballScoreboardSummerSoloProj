@@ -8,12 +8,12 @@
  *               reset button functionality, and photo electric sensors for goal
  *               detection. The single player mode uses the left button and
  *               photoelectric sensor to increment the user's score. The right button
- *               is used to begin computer scoring, in which a real opponent's scoring
+ *               is used to begin system scoring, in which a real opponent's scoring
  *               is simulated. The first to 10 wins.
  *
  * Platform:     MSP430F5529
  * Author:       Ryan Boyle
- * Date:         July–August 2025
+ * Date:         Julyâ€“August 2025
  ***********************************************************************************************/
 
 
@@ -147,8 +147,8 @@ int main(void){
                blinkSinglePlayerModeIndic();                       //Blinks "1" on both score boards to indicate to the user that they are now in single player mode
                score_playerLeft = 0;                               //Scores set to zero for restart
                score_playerRight = 0;
-               compScoring = 0;                                    //Stops computer scoring
-                                                                   //Also resets compScoring back to zero to require a new right button press to ensue scoring from the computer
+               compScoring = 0;                                    //Stops system scoring
+                                                                   //Also resets compScoring back to zero to require a new right button press to ensue scoring from the system
 
                state = STARTSINGLEPLAYERMODE;                      //Updates scores and starts the game
 
@@ -160,6 +160,7 @@ int main(void){
       return 0;
 
 }
+
 
 
 
