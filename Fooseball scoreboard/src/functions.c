@@ -251,7 +251,7 @@ void singlePlayerModeComp(void){
                                                                                    //comp refers to the system's autonomous scoring
               }
          if(compScoring){                                                          //Executes following code if the system scoring has already begun
-             if((sTicks - SinglePlayerCompStartTime) >= CompScoreDuration){        //Checks to see if the amount of seconds passed has reached the randomly generated duration for the computer to score
+             if((sTicks - SinglePlayerCompStartTime) >= CompScoreDuration){        //Checks to see if the amount of seconds passed has reached the randomly generated duration for the system to score
                  score_playerRight++;                                              //Right score increases by 1 once the randomly generated duration for the system to score has been reached
                  if (checkScoresSP()) {                                            //Checks to see if either score has reached 10
                     state = RESETSINGLEPLAYERMODE;                                 //Resets single player mode back to 0-0 and stops system scoring
@@ -389,5 +389,6 @@ __interrupt void Timer2_A0_ISR(void) {
 
 
 }
+
 
 
