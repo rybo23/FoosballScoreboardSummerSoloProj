@@ -244,16 +244,17 @@ void singlePlayerModeComp(void){
     static unsigned int CompScoreDuration = 0;
 
 
-         if(RightButtonPress() && compScoring == 0){                               //Starts computer scoring if right button is pressed for the first time
+         if(RightButtonPress() && compScoring == 0){                               //Starts system scoring if right button is pressed for the first time
                  SinglePlayerCompStartTime = sTicks;                               //Records start time
                  CompScoreDuration = (rand() % SPREAD) + DIFFICULTY;               //Gives a number within a range and adds a number to adjust difficulty (adds a number to min and max)
-                 compScoring = 1;                                                  //Computer scoring is active - allows for one time computer score initialization
+                 compScoring = 1;                                                  //System scoring is active - allows for one time system scoring initialization
+                                                                                   //comp refers to the system's autonomous scoring
               }
-         if(compScoring){                                                          //Executes following code if the computer scoring has already begun
+         if(compScoring){                                                          //Executes following code if the system scoring has already begun
              if((sTicks - SinglePlayerCompStartTime) >= CompScoreDuration){        //Checks to see if the amount of seconds passed has reached the randomly generated duration for the computer to score
-                 score_playerRight++;                                              //Right score increases by 1 once the randomly generated duration for the computer to score has been reached
+                 score_playerRight++;                                              //Right score increases by 1 once the randomly generated duration for the system to score has been reached
                  if (checkScoresSP()) {                                            //Checks to see if either score has reached 10
-                    state = RESETSINGLEPLAYERMODE;                                 //Resets single player mode back to 0-0 and stops computer scoring
+                    state = RESETSINGLEPLAYERMODE;                                 //Resets single player mode back to 0-0 and stops system scoring
 
                  }
 
@@ -293,7 +294,7 @@ void singlePlayerModeComp(void){
              if (ResetButtonPress()) {
                 score_playerLeft = 0;                                    //Scores set to zero for restart
                 score_playerRight = 0;
-                compScoring = 0;                                         //Stops computer scoring
+                compScoring = 0;                                         //Stops system scoring
                 updateScores(score_playerLeft, score_playerRight);       //Updates scores to 0-0
 
                             }
@@ -388,4 +389,5 @@ __interrupt void Timer2_A0_ISR(void) {
 
 
 }
+
 
